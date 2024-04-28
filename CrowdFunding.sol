@@ -24,7 +24,7 @@ contract CrowdFunding{
         require(msg.sender == owner, "You are not a owner to perform this");
         _;
     }
-
+    // Contribution method, allowing users to contribute
     function Contribute()public payable{
         require(msg.sender != owner, "Owner are not eligible to contribute"); 
         require(block.timestamp < timePreiod, "Crowdfunding is closed already");
@@ -39,6 +39,7 @@ contract CrowdFunding{
 
     }
 
+    // Refund method, meeting certain conditions and issuing refund
     function GetRefund() public payable {
         require(funders[msg.sender] > 0, "You are not a funder");
         require(block.timestamp > timePreiod, " Still collecting funds");
@@ -63,6 +64,7 @@ contract CrowdFunding{
     mapping (uint => Request) public allRequest; 
     uint indexRequest; 
 
+    // Campaign fund request creation for which funders can vote. 
     function CreateRequest(string memory _des, uint _amt, address payable _rcv) public isOwner{
 
         require(block.timestamp > timePreiod, "Funding is still on");
@@ -77,6 +79,7 @@ contract CrowdFunding{
 
     }
 
+    // Voting process and requirements
     function VotingProcess(uint _index) public {
         require(msg.sender != owner, "Owner can not vote for a request.");
         require(funders[msg.sender] > 0, "You are not a funder");
@@ -94,6 +97,8 @@ contract CrowdFunding{
 
     event MoneySent(address _to, uint _amt, string _des);
 
+    
+    //Releasing fund to the request or cause, can be done via the contract owner only with meeting certain conditions. 
     function MakePayment(uint _index) public payable isOwner {
         
         Request storage theRequest = allRequest[_index];
