@@ -1,7 +1,7 @@
 # CrowdFunding Smart Contract
 
 ## Description
-This Ethereum smart contract facilitates crowdfunding operations, allowing users to contribute funds towards a set goal within a specified time period. Contributors can vote on fund usage requests and, if the crowdfunding fails, claim refunds. The owner can create spending requests and execute payments upon successful votes.
+This Ethereum smart contract facilitates crowdfunding operations, allowing users to contribute funds towards a set goal within a specified time period. Contributors can vote on fund usage requests and, if the crowdfunding fails, claim refunds. The owner can create spending requests and execute payments upon successful votes. **This contract is designed for a single crowdfunding campaign only, others incouraged to contribute to make it professional. 
 
 ## Features
 - **Contribute Funds**: Users can contribute to the crowdfunding campaign if they are not the owner and the campaign is active.
